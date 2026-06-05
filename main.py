@@ -1,5 +1,7 @@
 import os, json, pickle, base64, re, tempfile, io
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
+
+WIB = timezone(timedelta(hours=7))
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -44,7 +46,7 @@ def get_pending_videos(sheets):
             continue
         try:
             t = datetime.strptime(jadwal, "%Y-%m-%d %H:%M")
-            if t <= datetime.now():
+            if t <= datetime.now(WIB).replace(tzinfo=None):
                 pending.append((i, title, desc, tags, link))
         except ValueError:
             continue
@@ -108,7 +110,7 @@ def save_updated_token(creds):
 
 
 def main():
-    print(f"Mulai {datetime.now()}")
+    print(f"Mulai {datetime.now(WIB).strftime('%Y-%m-%d %H:%M:%S')} WIB")
     yt, dr, sh, creds = get_services()
     pending = get_pending_videos(sh)
     if not pending:
