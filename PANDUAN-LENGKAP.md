@@ -6,7 +6,7 @@
 Google Spreadsheet (jadwal + link video)
         │
         ▼
-GitHub Actions (jalan tiap 30 menit, GRATIS, 24/7)
+GitHub Actions (jalan tiap 15 menit, GRATIS, 24/7)
         │
         ├── Google Sheets API → baca jadwal
         ├── Google Drive API  → download video
@@ -180,7 +180,7 @@ git push -u origin main
 2. Klik **I understand my workflows, go ahead and enable them**
 3. Klik **Run workflow** → **Run workflow** (untuk tes manual)
 
-Workflow juga akan jalan otomatis **setiap 30 menit**.
+Workflow juga akan jalan otomatis **setiap 15 menit** (cek jadwal di file `.github/workflows/upload.yml` baris `cron`). Keterlambatan beberapa menit wajar karena antrian GitHub gratis.
 
 ---
 
